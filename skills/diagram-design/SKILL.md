@@ -47,6 +47,28 @@ Applied to schematics:
 
 **Target density: 4/10.** Enough to be technically complete. Not so dense it needs a guide. Above 9 nodes, it's probably two diagrams.
 
+### Source Reference Requirement
+
+Every node and edge must map directly to a source location in code. Not ornamental — traceability is non-negotiable for technical diagrams.
+
+**Node requirement:** Each node represents a concrete component / function / service. Include source reference in sublabel: `path/to/file.py::function_name` or `service/module::class_name`.
+
+Examples:
+- Backend API: `app/backend/api/auth.py::authenticate`
+- Service: `app/services/llm.py::llm_runner`
+- Database: `db/models/user.py::User`
+- External: `vendor/stripe/billing.py` (vendor source, not yours)
+
+**Edge requirement:** Each arrow represents a call, message, or data flow. Label with the triggering function or method on the originating node. If unlabeled, ask: "Which line of code sends this?"
+
+**Syntax:**
+- File path: relative to project root
+- Function/method: `::` separator, exact symbol name
+- Class + method: `app/models/user.py::User.save`
+- If no direct function (e.g., a scheduled job or external API), use the handler: `app/jobs/scheduler.py::daily_sync`
+
+**Check before drawing:** Can you grep each node and edge label in the codebase? If no, the diagram is speculative, not a map.
+
 ---
 
 ## 2. When to Use
