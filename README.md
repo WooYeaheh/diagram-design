@@ -79,7 +79,7 @@ Quicker to install — but the skill lives in the plugin cache, so edits to `ref
 
 **Claude Code:**
 ```
-/plugin marketplace add cathrynlavery/diagram-design
+/plugin marketplace add WooYeaheh/diagram-design.git
 /plugin install diagram-design@diagram-design
 ```
 
